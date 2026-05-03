@@ -14,7 +14,7 @@ const products = [
     title: 'Shake Collection',
     subtitle: 'TRADITIONAL',
     description: 'The rustic charm of wood-grain shake with deep-ribbed profiles designed to enhance shadow lines and visual contrast.',
-    image: '/shake.png',
+    image: 'shake.png',
     colors: ['Ashwood', 'Brown Bark', 'Cedar', 'Charcoal'],
   },
   {
@@ -22,7 +22,7 @@ const products = [
     title: 'Classic Collection',
     subtitle: 'TIMELESS',
     description: 'Make a statement with strong, bold lines. Smooth flowing curves for a timeless appeal that never goes out of style.',
-    image: '/classic.png',
+    image: 'classic.png',
     colors: ['Slate Blue', 'Midnight', 'Graphite', 'Walnut'],
   },
 ];
@@ -190,7 +190,7 @@ const Features = () => {
             transition={{ duration: 0.9 }}
             style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '1', boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}
           >
-            <img src="/shake.png" alt="Skyban Roofing Quality" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="shake.png" alt="Skyban Roofing Quality" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </motion.div>
         </div>
       </section>

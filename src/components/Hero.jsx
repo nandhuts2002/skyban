@@ -137,7 +137,7 @@ const Hero = () => {
           position: 'absolute',
           inset: 0,
           y: bgY,
-          backgroundImage: "url('/hero-bg.png')",
+          backgroundImage: "url('hero-bg.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           scale: 1.1,
