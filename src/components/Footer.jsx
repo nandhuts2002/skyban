@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -58,14 +59,14 @@ const Footer = () => {
             <h4 style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '13px', color: 'white', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '24px' }}>Collections</h4>
             {['Shake', 'Classic', 'Bond', 'Royal', 'Antica'].map((item) => (
               <div key={item} style={{ marginBottom: '14px' }}>
-                <a
-                  href="#"
+                <Link
+                  to="/products"
                   style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => (e.target.style.color = '#cfa25d')}
                   onMouseLeave={(e) => (e.target.style.color = 'rgba(255,255,255,0.6)')}
                 >
                   {item}
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -73,16 +74,22 @@ const Footer = () => {
           {/* Company */}
           <div>
             <h4 style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '13px', color: 'white', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '24px' }}>Company</h4>
-            {['About Us', 'Our Process', 'Warranty', 'Certifications', 'Blog'].map((item) => (
-              <div key={item} style={{ marginBottom: '14px' }}>
-                <a
-                  href="#"
+            {[
+              { label: 'About Us', to: '/about' },
+              { label: 'Our Process', to: '/services' },
+              { label: 'Warranty', to: '/about' },
+              { label: 'Certifications', to: '/about' },
+              { label: 'Reviews', to: '/reviews' },
+            ].map((item) => (
+              <div key={item.label} style={{ marginBottom: '14px' }}>
+                <Link
+                  to={item.to}
                   style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => (e.target.style.color = '#cfa25d')}
                   onMouseLeave={(e) => (e.target.style.color = 'rgba(255,255,255,0.6)')}
                 >
-                  {item}
-                </a>
+                  {item.label}
+                </Link>
               </div>
             ))}
           </div>

@@ -1,15 +1,39 @@
 import React from 'react';
-import Hero from './components/Hero';
-import Features from './components/Features';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import VideoBackground from './components/VideoBackground';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+// Pages
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import ProductsPage from './pages/ProductsPage';
+import ReviewsPage from './pages/ReviewsPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
-    <div className="bg-skyban-blue min-h-screen">
-      <Hero />
-      <Features />
-      <Footer />
-    </div>
+    <BrowserRouter basename="/skyban">
+      {/* Fixed video background — persists across ALL routes */}
+      <VideoBackground />
+
+      {/* Fixed navbar — always visible */}
+      <Navbar />
+
+      {/* Scrollable page content above the video */}
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        <Routes>
+          <Route path="/"         element={<HomePage />} />
+          <Route path="/about"    element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/reviews"  element={<ReviewsPage />} />
+          <Route path="/contact"  element={<ContactPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
