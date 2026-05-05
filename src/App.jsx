@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import VideoBackground from './components/VideoBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -15,6 +16,9 @@ import ContactPage from './pages/ContactPage';
 function App() {
   return (
     <BrowserRouter basename="/skyban">
+      {/* Custom cursor — always on top */}
+      <CustomCursor />
+
       {/* Fixed video background — persists across ALL routes */}
       <VideoBackground />
 

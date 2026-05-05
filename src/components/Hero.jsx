@@ -172,7 +172,7 @@ const Hero = () => {
             fontFamily: 'Inter', fontWeight: 500, fontSize: '12px',
             letterSpacing: '3px', color: '#cfa25d', textTransform: 'uppercase',
           }}>
-            Premium Roofing Solutions
+            Est. Since 2006
           </span>
         </motion.div>
 
@@ -205,6 +205,24 @@ const Hero = () => {
             ))}
           </motion.h1>
 
+          {/* Roofing System subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.0 }}
+            style={{
+              fontFamily: 'Inter', fontWeight: 600,
+              fontSize: 'clamp(13px, 1.6vw, 18px)',
+              color: '#cfa25d',
+              letterSpacing: '6px',
+              textTransform: 'uppercase',
+              marginBottom: '18px',
+              textShadow: '0 2px 12px rgba(0,0,0,0.5)',
+            }}
+          >
+            Roofing System
+          </motion.p>
+
           {/* Gold divider */}
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
@@ -230,7 +248,7 @@ const Hero = () => {
               textShadow: '0 2px 16px rgba(0,0,0,0.5)',
             }}
           >
-            The rustic charm of traditional shake combined with the unmatched durability of stone-coated steel.
+            Experience the Excellence in Roofing
           </motion.p>
 
           {/* CTA buttons */}
@@ -288,7 +306,7 @@ const Hero = () => {
             display: 'flex', gap: '40px', alignItems: 'center',
           }}
         >
-          {['ISO 9001', '25+ Years', '10K+ Homes', '100% Warranty'].map((badge, i) => (
+          {['Since 2006', '20+ Years', '10K+ Homes', '100% Warranty'].map((badge, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 10 }}
@@ -318,37 +336,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2, duration: 1 }}
-        style={{
-          position: 'absolute', bottom: '36px', left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', gap: '8px', zIndex: 10,
-        }}
-      >
-        <span style={{
-          color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter',
-          fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase',
-        }}>
-          Scroll
-        </span>
-        <div style={{
-          width: '26px', height: '42px',
-          border: '1.5px solid rgba(255,255,255,0.25)',
-          borderRadius: '13px', display: 'flex',
-          justifyContent: 'center', paddingTop: '6px',
-        }}>
-          <motion.div
-            animate={{ y: [0, 14, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            style={{ width: '4px', height: '8px', background: '#cfa25d', borderRadius: '2px' }}
-          />
-        </div>
-      </motion.div>
+
     </div>
   );
 };
