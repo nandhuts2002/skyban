@@ -115,18 +115,6 @@ const Navbar = () => {
 
         {/* ── Right side: CTA + Hamburger ── */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-          {/* CTA — hidden on very small screens */}
-          <Link to="/contact" style={{ textDecoration: 'none' }} className="nav-cta-btn">
-            <motion.button
-              className="btn-ripple"
-              whileHover={{ scale: 1.06, boxShadow: '0 0 28px rgba(207,162,93,0.55)' }}
-              whileTap={{ scale: 0.96 }}
-              style={{ background: 'linear-gradient(135deg,#cfa25d 0%,#e8c07a 50%,#b88c4b 100%)', color: 'white', border: 'none', borderRadius: '9999px', padding: '9px 18px', fontFamily: 'Inter', fontWeight: 700, fontSize: '12px', letterSpacing: '0.3px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', whiteSpace: 'nowrap', boxShadow: '0 4px 18px rgba(207,162,93,0.35)' }}
-            >
-              Get a Quote
-              <motion.span animate={{ x: [0, 3, 0] }} transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }} style={{ fontSize: '14px', lineHeight: 1 }}>→</motion.span>
-            </motion.button>
-          </Link>
 
           {/* Hamburger button — visible only on mobile */}
           <motion.button
@@ -200,21 +188,6 @@ const Navbar = () => {
               </motion.div>
             ))}
 
-            {/* Mobile CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: links.length * 0.06 + 0.1, duration: 0.35 }}
-              style={{ width: '100%', maxWidth: '320px', marginTop: '16px' }}
-            >
-              <motion.button
-                onClick={() => { navigate('/contact'); setMenuOpen(false); }}
-                whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                style={{ width: '100%', background: 'linear-gradient(135deg,#cfa25d,#b88c4b)', color: 'white', border: 'none', borderRadius: '14px', padding: '18px', fontFamily: 'Inter', fontWeight: 700, fontSize: '15px', cursor: 'pointer', boxShadow: '0 8px 32px rgba(207,162,93,0.35)' }}
-              >
-                Get a Free Quote →
-              </motion.button>
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const collections = [
+  {
+    id: 'shingle', title: 'Shingle Collection', subtitle: 'PREMIUM', image: 'shake.png',
+    tagline: 'Classic Elegance. Superior Protection.',
+    desc: 'Inspired by traditional shingle roofing, this collection delivers the timeless look of slate with the unmatched durability of stone-coated steel and superior weather resistance.',
+    colors: ['Charcoal Grey', 'Colonial Red', 'Antique Brown', 'Slate Black'],
+    specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '190 kph' }, { label: 'Weight', value: '7.0 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
+  },
   {
     id: 'shake', title: 'Shake Collection', subtitle: 'TRADITIONAL', image: 'shake.png',
     tagline: 'Rustic Charm. Modern Strength.',
@@ -23,6 +31,13 @@ const collections = [
     colors: ['Pearl White', 'Terracotta', 'Obsidian', 'Sand'],
     specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '200 kph' }, { label: 'Weight', value: '6.8 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
   },
+  {
+    id: 'roman', title: 'Roman Collection', subtitle: 'ARCHITECTURAL', image: 'classic.png',
+    tagline: 'Grand Curves. Enduring Legacy.',
+    desc: 'Inspired by Roman clay tile, this collection features elegant barrel-shaped profiles that bring a Mediterranean grandeur to any home or commercial structure.',
+    colors: ['Terracotta', 'Sand Beige', 'Rustic Brown', 'Ivory'],
+    specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '190 kph' }, { label: 'Weight', value: '7.3 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
+  },
 ];
 
 const fadeUp = (delay = 0) => ({
@@ -34,6 +49,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function ProductsPage() {
   const [selected, setSelected] = useState(collections[0]);
+  const navigate = useNavigate();
   return (
     <div style={{ paddingTop: '100px', minHeight: '100vh' }}>
       <section style={{ padding: '80px 24px 60px', textAlign: 'center' }}>
@@ -78,9 +94,7 @@ export default function ProductsPage() {
                   </div>
                 ))}
               </div>
-              <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} style={{ background: 'linear-gradient(135deg,#cfa25d,#b88c4b)', color: 'white', border: 'none', borderRadius: '9999px', padding: '14px 36px', fontFamily: 'Inter', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}>
-                Request a Sample →
-              </motion.button>
+
             </div>
           </motion.div>
         </AnimatePresence>

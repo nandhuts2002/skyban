@@ -220,7 +220,7 @@ const Hero = () => {
               textShadow: '0 2px 12px rgba(0,0,0,0.5)',
             }}
           >
-            Roofing System
+            Skyban stone coated roofing tiles and Upvc Raingutters
           </motion.p>
 
           {/* Gold divider */}
@@ -248,7 +248,7 @@ const Hero = () => {
               textShadow: '0 2px 16px rgba(0,0,0,0.5)',
             }}
           >
-            Experience the Excellence in Roofing
+            Experience the excellence in roofing
           </motion.p>
 
           {/* CTA buttons */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const stats = [
   { value: '25+', label: 'Years of Experience' },
@@ -9,6 +10,14 @@ const stats = [
 ];
 
 const products = [
+  {
+    id: 'shingle',
+    title: 'Shingle Collection',
+    subtitle: 'PREMIUM',
+    description: 'Classic elegance meets modern durability. Timeless slate-inspired profiles with superior stone-coat finish and all-weather protection.',
+    image: 'shake.png',
+    colors: ['Charcoal Grey', 'Colonial Red', 'Antique Brown', 'Slate Black'],
+  },
   {
     id: 'shake',
     title: 'Shake Collection',
@@ -25,9 +34,26 @@ const products = [
     image: 'classic.png',
     colors: ['Slate Blue', 'Midnight', 'Graphite', 'Walnut'],
   },
+  {
+    id: 'bond',
+    title: 'Bond Collection',
+    subtitle: 'MODERN',
+    description: 'Low-profile interlocking tile system perfect for contemporary architecture and flat-facade commercial builds.',
+    image: 'shake.png',
+    colors: ['Pearl White', 'Terracotta', 'Obsidian', 'Sand'],
+  },
+  {
+    id: 'roman',
+    title: 'Roman Collection',
+    subtitle: 'ARCHITECTURAL',
+    description: 'Elegant barrel-shaped profiles inspired by Roman clay tile, bringing Mediterranean grandeur to any structure.',
+    image: 'classic.png',
+    colors: ['Terracotta', 'Sand Beige', 'Rustic Brown', 'Ivory'],
+  },
 ];
 
 const Features = () => {
+  const navigate = useNavigate();
   return (
     <>
       {/* Stats Bar */}
@@ -67,7 +93,7 @@ const Features = () => {
           </motion.div>
 
           {/* Product Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))', gap: '32px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
             {products.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -162,6 +188,7 @@ const Features = () => {
               </motion.div>
             ))}
             <button
+              onClick={() => navigate('/about')}
               style={{
                 marginTop: '16px',
                 background: 'transparent',
@@ -212,26 +239,9 @@ const Features = () => {
             Get a free, no-obligation quote from our roofing experts today.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+
             <button
-              style={{
-                background: 'white',
-                color: '#cfa25d',
-                border: 'none',
-                borderRadius: '9999px',
-                padding: '18px 44px',
-                fontFamily: 'Inter',
-                fontWeight: 700,
-                fontSize: '16px',
-                cursor: 'pointer',
-                transition: 'all 0.25s',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,0,0,0.3)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.2)'; }}
-            >
-              Get a Free Quote
-            </button>
-            <button
+              onClick={() => navigate('/contact')}
               style={{
                 background: 'transparent',
                 color: 'white',

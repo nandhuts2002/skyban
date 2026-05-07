@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   return (
     <footer style={{ background: '#192840', color: 'rgba(255,255,255,0.65)', padding: '80px 0 40px' }}>
@@ -102,25 +103,7 @@ const Footer = () => {
               <p style={{ marginTop: '8px' }}>+1 (800) SKY-ROOF</p>
               <p style={{ marginTop: '8px' }}>Mon – Fri, 9am – 6pm</p>
             </div>
-            <button
-              style={{
-                marginTop: '24px',
-                background: '#cfa25d',
-                color: 'white',
-                border: 'none',
-                borderRadius: '9999px',
-                padding: '12px 24px',
-                fontFamily: 'Inter',
-                fontWeight: 600,
-                fontSize: '13px',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#b88c4b'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#cfa25d'; e.currentTarget.style.transform = 'translateY(0)'; }}
-            >
-              Get a Free Quote
-            </button>
+
           </div>
         </div>
 
