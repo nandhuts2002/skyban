@@ -51,7 +51,7 @@ const VideoBackground = () => {
             display: 'block',
           }}
         >
-          <source src={`${import.meta.env.BASE_URL}roofing-bg.mp4`} type="video/mp4" />
+          <source src={`${import.meta.env.BASE_URL}skyban-bg-full.mp4`} type="video/mp4" />
         </video>
       </motion.div>
 
@@ -114,7 +114,7 @@ const VideoBackground = () => {
           background: 'rgba(22,34,51,0.72)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          cursor: 'none',
+          cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
