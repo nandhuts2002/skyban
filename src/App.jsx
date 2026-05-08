@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import VideoBackground from './components/VideoBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
+
 import RequestCallButton from './components/RequestCallButton';
 
 // Pages
@@ -16,8 +16,7 @@ import ContactPage from './pages/ContactPage';
 function App() {
   return (
     <BrowserRouter basename="/skyban">
-      {/* Custom cursor — always on top */}
-      <CustomCursor />
+
 
       {/* Floating Animated Call Button */}
       <RequestCallButton />
