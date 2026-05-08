@@ -4,39 +4,39 @@ import { useNavigate } from 'react-router-dom';
 
 const collections = [
   {
-    id: 'shingle', title: 'Shingle Collection', subtitle: 'PREMIUM', image: 'shake.png',
-    tagline: 'Classic Elegance. Superior Protection.',
-    desc: 'Inspired by traditional shingle roofing, this collection delivers the timeless look of slate with the unmatched durability of stone-coated steel and superior weather resistance.',
-    colors: ['Charcoal Grey', 'Colonial Red', 'Antique Brown', 'Slate Black'],
-    specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '190 kph' }, { label: 'Weight', value: '7.0 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
-  },
-  {
-    id: 'shake', title: 'Shake Collection', subtitle: 'TRADITIONAL', image: 'shake.png',
+    id: 'shake', title: 'Shake Collection', subtitle: 'TRADITIONAL', image: `${import.meta.env.BASE_URL}premium_shake_roof.png`,
     tagline: 'Rustic Charm. Modern Strength.',
     desc: 'Deep-ribbed profiles inspired by wood-grain shake with proprietary mineral stone-coat finish for lasting colour and weather resistance.',
     colors: ['Ashwood', 'Brown Bark', 'Cedar', 'Charcoal'],
     specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '190 kph' }, { label: 'Weight', value: '7.5 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
   },
   {
-    id: 'classic', title: 'Classic Collection', subtitle: 'TIMELESS', image: 'classic.png',
+    id: 'classic', title: 'Classic Collection', subtitle: 'TIMELESS', image: `${import.meta.env.BASE_URL}premium_classic_roof.png`,
     tagline: 'Bold Lines. Timeless Appeal.',
     desc: 'Strong, clean lines and smooth curves for a polished contemporary look with the full durability of stone-coated steel.',
     colors: ['Slate Blue', 'Midnight', 'Graphite', 'Walnut'],
     specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '190 kph' }, { label: 'Weight', value: '7.2 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
   },
   {
-    id: 'bond', title: 'Bond Collection', subtitle: 'MODERN', image: 'shake.png',
+    id: 'bond', title: 'Bond Collection', subtitle: 'MODERN', image: `${import.meta.env.BASE_URL}premium_bond_roof.png`,
     tagline: 'Minimal Profile. Maximum Strength.',
     desc: 'Low-profile interlocking tile system perfect for contemporary architecture and flat-facade commercial builds.',
     colors: ['Pearl White', 'Terracotta', 'Obsidian', 'Sand'],
     specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '200 kph' }, { label: 'Weight', value: '6.8 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
   },
   {
-    id: 'roman', title: 'Roman Collection', subtitle: 'ARCHITECTURAL', image: 'classic.png',
-    tagline: 'Grand Curves. Enduring Legacy.',
-    desc: 'Inspired by Roman clay tile, this collection features elegant barrel-shaped profiles that bring a Mediterranean grandeur to any home or commercial structure.',
-    colors: ['Terracotta', 'Sand Beige', 'Rustic Brown', 'Ivory'],
-    specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '190 kph' }, { label: 'Weight', value: '7.3 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
+    id: 'shingle', title: 'Shingle Collection', subtitle: 'ELEGANT', image: `${import.meta.env.BASE_URL}premium_shingle_roof.png`,
+    tagline: 'Traditional Aesthetic. Lasting Durability.',
+    desc: 'Replicating the look of dimensional asphalt shingles but constructed from high-tensile stone-coated steel.',
+    colors: ['Bark', 'Charcoal', 'Forest', 'Autumn'],
+    specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '190 kph' }, { label: 'Weight', value: '7.0 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
+  },
+  {
+    id: 'roman', title: 'Roman Collection', subtitle: 'MEDITERRANEAN', image: `${import.meta.env.BASE_URL}premium_roman_roof.png`,
+    tagline: 'Classic Beauty. Ultimate Protection.',
+    desc: 'The distinctive curve of authentic Mediterranean clay tiles, but much lighter and completely storm-proof.',
+    colors: ['Terracotta', 'Sand', 'Tuscany', 'Rustic'],
+    specs: [{ label: 'Material', value: 'Galvalume Steel' }, { label: 'Wind Rating', value: '200 kph' }, { label: 'Weight', value: '7.4 kg/m²' }, { label: 'Warranty', value: '50 Years' }],
   },
 ];
 
@@ -94,7 +94,9 @@ export default function ProductsPage() {
                   </div>
                 ))}
               </div>
-
+              <motion.button onClick={() => navigate('/contact')} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} style={{ background: 'linear-gradient(135deg,#cfa25d,#b88c4b)', color: 'white', border: 'none', borderRadius: '9999px', padding: '14px 36px', fontFamily: 'Inter', fontWeight: 700, fontSize: '14px', cursor: 'pointer' }}>
+                Request a Sample →
+              </motion.button>
             </div>
           </motion.div>
         </AnimatePresence>

@@ -3,19 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const links = [
-  { label: 'About',    to: '/about'    },
+  { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Products', to: '/products' },
-  { label: 'Reviews',  to: '/reviews'  },
-  { label: 'Contact',  to: '/contact'  },
+  { label: 'Contact', to: '/contact' },
 ];
 
 const Navbar = () => {
-  const [scrolled, setScrolled]   = useState(false);
-  const [hovered, setHovered]     = useState(null);
-  const [menuOpen, setMenuOpen]   = useState(false);
-  const location  = useLocation();
-  const navigate  = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+  const [hovered, setHovered] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -66,7 +65,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.97 }}
           >
             <motion.div
-              animate={{ filter: ['drop-shadow(0 0 3px rgba(207,162,93,0))','drop-shadow(0 0 7px rgba(207,162,93,0.8))','drop-shadow(0 0 3px rgba(207,162,93,0))'] }}
+              animate={{ filter: ['drop-shadow(0 0 3px rgba(207,162,93,0))', 'drop-shadow(0 0 7px rgba(207,162,93,0.8))', 'drop-shadow(0 0 3px rgba(207,162,93,0))'] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
             >
               <svg width="30" height="22" viewBox="0 0 100 60" fill="none">
@@ -127,9 +126,9 @@ const Navbar = () => {
             {[0, 1, 2].map((i) => (
               <motion.span key={i}
                 animate={menuOpen
-                  ? i === 0 ? { rotate: 45,  y: 8, width: '18px' }
-                  : i === 1 ? { opacity: 0,  scaleX: 0 }
-                  : { rotate: -45, y: -8, width: '18px' }
+                  ? i === 0 ? { rotate: 45, y: 8, width: '18px' }
+                    : i === 1 ? { opacity: 0, scaleX: 0 }
+                      : { rotate: -45, y: -8, width: '18px' }
                   : { rotate: 0, y: 0, opacity: 1, scaleX: 1, width: '18px' }
                 }
                 transition={{ duration: 0.25 }}

@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
   return (
     <footer style={{ background: '#192840', color: 'rgba(255,255,255,0.65)', padding: '80px 0 40px' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
@@ -58,7 +58,7 @@ const Footer = () => {
           {/* Collections */}
           <div>
             <h4 style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '13px', color: 'white', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '24px' }}>Collections</h4>
-            {['Shake', 'Classic', 'Bond', 'Royal', 'Antica'].map((item) => (
+            {['Shingle', 'Shake', 'Classic', 'Bond', 'Roman'].map((item) => (
               <div key={item} style={{ marginBottom: '14px' }}>
                 <Link
                   to="/products"
@@ -80,7 +80,6 @@ const Footer = () => {
               { label: 'Our Process', to: '/services' },
               { label: 'Warranty', to: '/about' },
               { label: 'Certifications', to: '/about' },
-              { label: 'Reviews', to: '/reviews' },
             ].map((item) => (
               <div key={item.label} style={{ marginBottom: '14px' }}>
                 <Link
@@ -99,11 +98,30 @@ const Footer = () => {
           <div>
             <h4 style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '13px', color: 'white', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '24px' }}>Contact</h4>
             <div style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.75 }}>
-              <p>info@skyban.com</p>
-              <p style={{ marginTop: '8px' }}>+1 (800) SKY-ROOF</p>
-              <p style={{ marginTop: '8px' }}>Mon – Fri, 9am – 6pm</p>
+              <p>skybanroofing@gmail.com</p>
+              <p style={{ marginTop: '8px' }}>+91 9072512777</p>
+              <p style={{ marginTop: '8px' }}>Alfa Horizon, Kochi, Kerala - 682504</p>
             </div>
-
+            <button
+              onClick={() => navigate('/contact')}
+              style={{
+                marginTop: '24px',
+                background: '#cfa25d',
+                color: 'white',
+                border: 'none',
+                borderRadius: '9999px',
+                padding: '12px 24px',
+                fontFamily: 'Inter',
+                fontWeight: 600,
+                fontSize: '13px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = '#b88c4b'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#cfa25d'; e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
+              Request a Sample
+            </button>
           </div>
         </div>
 

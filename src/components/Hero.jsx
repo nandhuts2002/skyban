@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const Orbs = () => (
   <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
     {[
-      { size: 480, x: '75%', y: '10%', delay: 0,  color: 'rgba(207,162,93,0.06)' },
-      { size: 320, x: '10%', y: '60%', delay: 2,  color: 'rgba(43,67,101,0.4)'   },
-      { size: 200, x: '50%', y: '80%', delay: 4,  color: 'rgba(207,162,93,0.04)' },
-      { size: 140, x: '88%', y: '55%', delay: 1,  color: 'rgba(255,255,255,0.03)'},
+      { size: 480, x: '75%', y: '10%', delay: 0, color: 'rgba(207,162,93,0.06)' },
+      { size: 320, x: '10%', y: '60%', delay: 2, color: 'rgba(43,67,101,0.4)' },
+      { size: 200, x: '50%', y: '80%', delay: 4, color: 'rgba(207,162,93,0.04)' },
+      { size: 140, x: '88%', y: '55%', delay: 1, color: 'rgba(255,255,255,0.03)' },
     ].map((orb, i) => (
       <motion.div
         key={i}
@@ -110,7 +110,7 @@ const Hero = () => {
   const containerRef = useRef(null);
   const navigate = useNavigate();
   const { scrollY } = useScroll();
-  const textY  = useTransform(scrollY, [0, 600], [0, -80]);
+  const textY = useTransform(scrollY, [0, 600], [0, -80]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
@@ -220,7 +220,7 @@ const Hero = () => {
               textShadow: '0 2px 12px rgba(0,0,0,0.5)',
             }}
           >
-            Skyban stone coated roofing tiles and Upvc Raingutters
+            Roofing System
           </motion.p>
 
           {/* Gold divider */}
@@ -248,7 +248,7 @@ const Hero = () => {
               textShadow: '0 2px 16px rgba(0,0,0,0.5)',
             }}
           >
-            Experience the excellence in roofing
+            Experience the Excellence in Roofing
           </motion.p>
 
           {/* CTA buttons */}

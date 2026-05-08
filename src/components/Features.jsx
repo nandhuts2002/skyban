@@ -11,19 +11,11 @@ const stats = [
 
 const products = [
   {
-    id: 'shingle',
-    title: 'Shingle Collection',
-    subtitle: 'PREMIUM',
-    description: 'Classic elegance meets modern durability. Timeless slate-inspired profiles with superior stone-coat finish and all-weather protection.',
-    image: 'shake.png',
-    colors: ['Charcoal Grey', 'Colonial Red', 'Antique Brown', 'Slate Black'],
-  },
-  {
     id: 'shake',
     title: 'Shake Collection',
     subtitle: 'TRADITIONAL',
     description: 'The rustic charm of wood-grain shake with deep-ribbed profiles designed to enhance shadow lines and visual contrast.',
-    image: 'shake.png',
+    image: `${import.meta.env.BASE_URL}premium_shake_roof.png`,
     colors: ['Ashwood', 'Brown Bark', 'Cedar', 'Charcoal'],
   },
   {
@@ -31,7 +23,7 @@ const products = [
     title: 'Classic Collection',
     subtitle: 'TIMELESS',
     description: 'Make a statement with strong, bold lines. Smooth flowing curves for a timeless appeal that never goes out of style.',
-    image: 'classic.png',
+    image: `${import.meta.env.BASE_URL}premium_classic_roof.png`,
     colors: ['Slate Blue', 'Midnight', 'Graphite', 'Walnut'],
   },
   {
@@ -39,16 +31,24 @@ const products = [
     title: 'Bond Collection',
     subtitle: 'MODERN',
     description: 'Low-profile interlocking tile system perfect for contemporary architecture and flat-facade commercial builds.',
-    image: 'shake.png',
+    image: `${import.meta.env.BASE_URL}premium_bond_roof.png`,
     colors: ['Pearl White', 'Terracotta', 'Obsidian', 'Sand'],
+  },
+  {
+    id: 'shingle',
+    title: 'Shingle Collection',
+    subtitle: 'ELEGANT',
+    description: 'Replicating the look of dimensional asphalt shingles but constructed from high-tensile stone-coated steel.',
+    image: `${import.meta.env.BASE_URL}premium_shingle_roof.png`,
+    colors: ['Bark', 'Charcoal', 'Forest', 'Autumn'],
   },
   {
     id: 'roman',
     title: 'Roman Collection',
-    subtitle: 'ARCHITECTURAL',
-    description: 'Elegant barrel-shaped profiles inspired by Roman clay tile, bringing Mediterranean grandeur to any structure.',
-    image: 'classic.png',
-    colors: ['Terracotta', 'Sand Beige', 'Rustic Brown', 'Ivory'],
+    subtitle: 'MEDITERRANEAN',
+    description: 'The distinctive curve of authentic Mediterranean clay tiles, but much lighter and completely storm-proof.',
+    image: `${import.meta.env.BASE_URL}premium_roman_roof.png`,
+    colors: ['Terracotta', 'Sand', 'Tuscany', 'Rustic'],
   },
 ];
 
@@ -93,7 +93,7 @@ const Features = () => {
           </motion.div>
 
           {/* Product Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))', gap: '32px' }}>
             {products.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -188,7 +188,6 @@ const Features = () => {
               </motion.div>
             ))}
             <button
-              onClick={() => navigate('/about')}
               style={{
                 marginTop: '16px',
                 background: 'transparent',
@@ -211,13 +210,22 @@ const Features = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 40, scale: 0.9 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '1', boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}
+            transition={{ duration: 0.9, type: 'spring' }}
+            style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', aspectRatio: '4/5', boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}
+            whileHover={{ y: -10 }}
           >
-            <img src="shake.png" alt="Skyban Roofing Quality" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <motion.img 
+              src={`${import.meta.env.BASE_URL}roofing_durability.png`}
+              alt="Skyban Roofing Quality" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.7 }}
+            />
+            {/* Overlay gradient for premium feel */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)' }} />
           </motion.div>
         </div>
       </section>
@@ -236,10 +244,29 @@ const Features = () => {
         >
           <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: 'clamp(32px, 5vw, 56px)', color: 'white', marginBottom: '20px' }}>Ready to Protect Your Home?</h2>
           <p style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '48px', maxWidth: '500px', margin: '0 auto 48px' }}>
-            Get a free, no-obligation quote from our roofing experts today.
+            Get a free roofing sample from our experts today.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-
+            <button
+              onClick={() => navigate('/contact')}
+              style={{
+                background: 'white',
+                color: '#cfa25d',
+                border: 'none',
+                borderRadius: '9999px',
+                padding: '18px 44px',
+                fontFamily: 'Inter',
+                fontWeight: 700,
+                fontSize: '16px',
+                cursor: 'pointer',
+                transition: 'all 0.25s',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,0,0,0.3)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.2)'; }}
+            >
+              Request a Sample
+            </button>
             <button
               onClick={() => navigate('/contact')}
               style={{

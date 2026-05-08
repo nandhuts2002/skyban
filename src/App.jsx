@@ -4,13 +4,13 @@ import VideoBackground from './components/VideoBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import RequestCallButton from './components/RequestCallButton';
 
 // Pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ProductsPage from './pages/ProductsPage';
-import ReviewsPage from './pages/ReviewsPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -18,6 +18,9 @@ function App() {
     <BrowserRouter basename="/skyban">
       {/* Custom cursor — always on top */}
       <CustomCursor />
+
+      {/* Floating Animated Call Button */}
+      <RequestCallButton />
 
       {/* Fixed video background — persists across ALL routes */}
       <VideoBackground />
@@ -32,7 +35,6 @@ function App() {
           <Route path="/about"    element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/products" element={<ProductsPage />} />
-          <Route path="/reviews"  element={<ReviewsPage />} />
           <Route path="/contact"  element={<ContactPage />} />
         </Routes>
         <Footer />
