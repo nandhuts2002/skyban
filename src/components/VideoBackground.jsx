@@ -105,7 +105,7 @@ const VideoBackground = () => {
         style={{
           position: 'fixed',
           bottom: '28px',
-          right: '28px',
+          left: '28px',
           zIndex: 10,
           width: '44px',
           height: '44px',
