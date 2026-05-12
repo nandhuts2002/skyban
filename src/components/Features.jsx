@@ -1,13 +1,6 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-
-const stats = [
-  { value: '25+', label: 'Years of Experience' },
-  { value: '10K+', label: 'Homes Protected' },
-  { value: '190kph', label: 'Wind Resistance' },
-  { value: '100%', label: 'Waterproof Guarantee' },
-];
 
 const products = [
   {
@@ -16,7 +9,7 @@ const products = [
     subtitle: 'TRADITIONAL',
     description: 'The rustic charm of wood-grain shake with deep-ribbed profiles designed to enhance shadow lines and visual contrast.',
     image: `${import.meta.env.BASE_URL}premium_shake_roof.png`,
-    colors: ['Ashwood', 'Brown Bark', 'Cedar', 'Charcoal'],
+    bullets: ['Deep-ribbed profiles', 'Visual contrast', 'Weather Resistant', 'Lightweight'],
   },
   {
     id: 'classic',
@@ -24,7 +17,7 @@ const products = [
     subtitle: 'TIMELESS',
     description: 'Make a statement with strong, bold lines. Smooth flowing curves for a timeless appeal that never goes out of style.',
     image: `${import.meta.env.BASE_URL}premium_classic_roof.png`,
-    colors: ['Slate Blue', 'Midnight', 'Graphite', 'Walnut'],
+    bullets: ['Smooth flowing curves', 'Bold lines', 'Timeless appeal', 'High Durability'],
   },
   {
     id: 'bond',
@@ -32,7 +25,7 @@ const products = [
     subtitle: 'MODERN',
     description: 'Low-profile interlocking tile system perfect for contemporary architecture and flat-facade commercial builds.',
     image: `${import.meta.env.BASE_URL}premium_bond_roof.png`,
-    colors: ['Pearl White', 'Terracotta', 'Obsidian', 'Sand'],
+    bullets: ['Low-profile design', 'Interlocking system', 'Contemporary look', 'Secure fit'],
   },
   {
     id: 'shingle',
@@ -40,7 +33,7 @@ const products = [
     subtitle: 'ELEGANT',
     description: 'Replicating the look of dimensional asphalt shingles but constructed from high-tensile stone-coated steel.',
     image: `${import.meta.env.BASE_URL}premium_shingle_roof.png`,
-    colors: ['Bark', 'Charcoal', 'Forest', 'Autumn'],
+    bullets: ['Asphalt look', 'Stone-coated steel', 'High-tensile strength', 'Elegant finish'],
   },
   {
     id: 'roman',
@@ -48,248 +41,207 @@ const products = [
     subtitle: 'MEDITERRANEAN',
     description: 'The distinctive curve of authentic Mediterranean clay tiles, but much lighter and completely storm-proof.',
     image: `${import.meta.env.BASE_URL}premium_roman_roof.png`,
-    colors: ['Terracotta', 'Sand', 'Tuscany', 'Rustic'],
+    bullets: ['Mediterranean style', 'Distinctive curve', 'Storm-proof', 'Lightweight'],
   },
 ];
 
 const Features = () => {
   const navigate = useNavigate();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
-    <>
-      {/* Stats Bar */}
-      <section style={{ background: '#1f314a', padding: '48px 0', borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px', textAlign: 'center' }}>
-          {stats.map((stat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-            >
-              <div style={{ fontFamily: 'Playfair Display', fontSize: '42px', fontWeight: 700, color: '#cfa25d', lineHeight: 1 }}>{stat.value}</div>
-              <div style={{ fontFamily: 'Inter', fontSize: '12px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', letterSpacing: '1.5px', textTransform: 'uppercase', marginTop: '8px' }}>{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section id="products" style={{ background: '#2b4365', padding: '120px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-          {/* Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ textAlign: 'center', marginBottom: '80px' }}
-          >
-            <p style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: '12px', letterSpacing: '4px', color: '#cfa25d', textTransform: 'uppercase', marginBottom: '16px' }}>Our Premium Collections</p>
-            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: 'clamp(36px, 5vw, 60px)', color: 'white', marginBottom: '20px' }}>Masterpieces in Steel</h2>
-            <p style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '16px', color: 'rgba(255,255,255,0.6)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.7 }}>
-              100% waterproof, earthquake safe, fire resistant, and able to withstand hurricane-force winds.
+    <div style={{ background: '#f5f5f5', color: '#0a0a0a', paddingTop: '120px' }}>
+      
+      {/* ── Products Section ────────────────────────────────────────── */}
+      <section style={{ padding: '80px 48px', maxWidth: '1400px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2.5fr', gap: '60px' }}>
+          
+          {/* Left Text Block */}
+          <div>
+            <p style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '11px', color: '#cfa25d', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>OUR PRODUCTS</p>
+            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '42px', lineHeight: 1.1, color: '#0a0a0a', marginBottom: '24px' }}>
+              Roofing & Gutter Solutions Designed for <span style={{ color: '#cfa25d' }}>Excellence</span>
+            </h2>
+            <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: '#555', lineHeight: 1.6, marginBottom: '40px' }}>
+              High performance roofing tiles and uPVC rain gutters that combine strength, style and long lasting protection.
             </p>
-          </motion.div>
+            <button
+              onClick={() => navigate('/products')}
+              style={{
+                background: '#0a0a0a', color: 'white', border: 'none',
+                padding: '16px 32px', fontFamily: 'Inter', fontWeight: 600, fontSize: '12px',
+                cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px',
+                transition: 'background 0.3s'
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = '#222'}
+              onMouseLeave={e => e.currentTarget.style.background = '#0a0a0a'}
+            >
+              VIEW ALL PRODUCTS <span>→</span>
+            </button>
+          </div>
 
-          {/* Product Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))', gap: '32px' }}>
-            {products.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer' }}
-                className="product-card"
-                whileHover={{ y: -8 }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    backgroundImage: `url(${product.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    transition: 'transform 0.7s ease',
-                  }}
-                  className="product-img"
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)',
-                  }}
-                />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, padding: '36px', width: '100%' }}>
-                  <p style={{ fontFamily: 'Inter', fontSize: '11px', fontWeight: 600, letterSpacing: '3px', color: '#cfa25d', textTransform: 'uppercase', marginBottom: '8px' }}>{product.subtitle}</p>
-                  <h3 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '28px', color: 'white', marginBottom: '12px' }}>{product.title}</h3>
-                  <p style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, marginBottom: '20px' }}>{product.description}</p>
-                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    {product.colors.map((color) => (
-                      <span
-                        key={color}
-                        style={{
-                          background: 'rgba(255,255,255,0.12)',
-                          backdropFilter: 'blur(8px)',
-                          border: '1px solid rgba(255,255,255,0.15)',
-                          borderRadius: '9999px',
-                          padding: '4px 14px',
-                          fontFamily: 'Inter',
-                          fontSize: '11px',
-                          color: 'rgba(255,255,255,0.8)',
-                        }}
-                      >
-                        {color}
-                      </span>
-                    ))}
+          {/* Right Product Cards */}
+          <div style={{ display: 'flex', gap: '24px', overflowX: 'auto', paddingBottom: '24px' }}>
+            {products.slice(0, 3).map((product) => (
+              <div key={product.id} style={{ background: 'white', minWidth: '320px', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
+                <div style={{ height: '200px', overflow: 'hidden', position: 'relative' }}>
+                  <img src={product.image} alt={product.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div style={{ position: 'absolute', bottom: '-20px', left: '24px', width: '48px', height: '48px', background: '#cfa25d', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', border: '4px solid white' }}>
+                    🏠
                   </div>
                 </div>
-              </motion.div>
+                <div style={{ padding: '40px 24px 32px' }}>
+                  <h3 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '20px', color: '#0a0a0a', marginBottom: '16px', textTransform: 'uppercase' }}>
+                    {product.title}
+                  </h3>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0' }}>
+                    {product.bullets.map((bullet, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontFamily: 'Inter', fontSize: '13px', color: '#555' }}>
+                        <span style={{ color: '#cfa25d', fontSize: '14px' }}>✔</span> {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() => navigate(`/products#${product.id}`)}
+                    style={{ background: 'transparent', border: 'none', color: '#cfa25d', fontFamily: 'Inter', fontWeight: 600, fontSize: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+                  >
+                    EXPLORE MORE <span>→</span>
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Skyban Section */}
-      <section id="about" style={{ background: '#1f314a', padding: '120px 0' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
+      {/* ── About Section ───────────────────────────────────────────── */}
+      <section style={{ background: '#0a0a0a', color: 'white', padding: '100px 48px' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+          
+          {/* Real Video Player */}
+          <div 
+            style={{ position: 'relative', borderRadius: '4px', overflow: 'hidden', aspectRatio: '16/9', cursor: 'pointer' }}
+            onClick={togglePlay}
           >
-            <p style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: '12px', letterSpacing: '4px', color: '#cfa25d', textTransform: 'uppercase', marginBottom: '16px' }}>Why Choose Skyban</p>
-            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: 'clamp(30px, 4vw, 50px)', color: 'white', marginBottom: '24px', lineHeight: 1.15 }}>
-              Built for the World's Harshest Environments
-            </h2>
-            <p style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '16px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, marginBottom: '36px' }}>
-              Skyban's stone-coated steel roofing systems are ISO 9001 accredited and backed by international test reports confirming 100% waterproof performance, earthquake safety, and fire resistance.
-            </p>
-            {[
-              { icon: '🛡️', text: 'Fire Resistant & Earthquake Safe' },
-              { icon: '💧', text: '100% Waterproof Guarantee' },
-              { icon: '🌪️', text: 'Withstands 190kph Hurricane Winds' },
-              { icon: '⚡', text: 'Energy Efficient & UV Resistant' },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}
-              >
-                <span style={{ fontSize: '20px' }}>{item.icon}</span>
-                <span style={{ fontFamily: 'Inter', fontSize: '15px', color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>{item.text}</span>
-              </motion.div>
-            ))}
-            <button
-              style={{
-                marginTop: '16px',
-                background: 'transparent',
-                color: '#cfa25d',
-                border: '1.5px solid #cfa25d',
-                borderRadius: '9999px',
-                padding: '14px 32px',
-                fontFamily: 'Inter',
-                fontWeight: 600,
-                fontSize: '14px',
-                cursor: 'pointer',
-                letterSpacing: '0.5px',
-                transition: 'all 0.25s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#cfa25d'; e.currentTarget.style.color = 'white'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#cfa25d'; }}
-            >
-              Learn More →
-            </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.9 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, type: 'spring' }}
-            style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', aspectRatio: '4/5', boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}
-            whileHover={{ y: -10 }}
-          >
-            <motion.img 
-              src={`${import.meta.env.BASE_URL}roofing_durability.png`}
-              alt="Skyban Roofing Quality" 
+            <video 
+              ref={videoRef}
+              src={`${import.meta.env.BASE_URL}skyban-bg-full.mp4`} 
+              poster={`${import.meta.env.BASE_URL}premium_shingle_roof.png`}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.7 }}
+              playsInline
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
             />
-            {/* Overlay gradient for premium feel */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)' }} />
-          </motion.div>
+            {!isPlaying && (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)' }}>
+                <div style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', transition: 'all 0.3s' }}>
+                  <div style={{ width: 0, height: 0, borderTop: '12px solid transparent', borderBottom: '12px solid transparent', borderLeft: '20px solid white', marginLeft: '6px' }} />
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* About Text & Stats */}
+          <div>
+            <p style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '11px', color: '#cfa25d', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>ABOUT SKYBAN</p>
+            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '48px', lineHeight: 1.1, color: 'white', marginBottom: '24px' }}>
+              Building Roofs.<br/>Building <span style={{ color: '#cfa25d' }}>Trust.</span>
+            </h2>
+            <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, marginBottom: '48px', maxWidth: '500px' }}>
+              Skyban Roofing Systems is committed to delivering innovative, long-lasting and aesthetically superior roofing and gutter solutions. With advanced technology and strict quality standards, we ensure every roof we build stands tall for generations.
+            </p>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+              {[
+                { val: '10+', label: 'Years of Excellence', icon: '🏢' },
+                { val: '1000+', label: 'Projects Completed', icon: '📋' },
+                { val: '500+', label: 'Happy Customers', icon: '🤝' },
+                { val: '100%', label: 'Quality Assurance', icon: '⭐' }
+              ].map((stat, i) => (
+                <div key={i}>
+                  <div style={{ color: '#cfa25d', fontSize: '24px', marginBottom: '8px' }}>{stat.icon}</div>
+                  <div style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '28px', color: '#cfa25d', marginBottom: '4px' }}>{stat.val}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '11px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="contact" style={{
-        background: 'linear-gradient(135deg, #cfa25d 0%, #b88c4b 100%)',
-        padding: '100px 24px',
-        textAlign: 'center',
-      }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: 'clamp(32px, 5vw, 56px)', color: 'white', marginBottom: '20px' }}>Ready to Protect Your Home?</h2>
-          <p style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '48px', maxWidth: '500px', margin: '0 auto 48px' }}>
-            Get a free roofing sample from our experts today.
-          </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button
-              onClick={() => navigate('/contact')}
-              style={{
-                background: 'white',
-                color: '#cfa25d',
-                border: 'none',
-                borderRadius: '9999px',
-                padding: '18px 44px',
-                fontFamily: 'Inter',
-                fontWeight: 700,
-                fontSize: '16px',
-                cursor: 'pointer',
-                transition: 'all 0.25s',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,0,0,0.3)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.2)'; }}
-            >
-              Request a Sample
-            </button>
-            <button
-              onClick={() => navigate('/contact')}
-              style={{
-                background: 'transparent',
-                color: 'white',
-                border: '2px solid rgba(255,255,255,0.7)',
-                borderRadius: '9999px',
-                padding: '18px 44px',
-                fontFamily: 'Inter',
-                fontWeight: 600,
-                fontSize: '16px',
-                cursor: 'pointer',
-                transition: 'all 0.25s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; }}
-            >
-              Contact Us
-            </button>
+      {/* ── Why Choose Skyban ───────────────────────────────────────── */}
+      <section style={{ background: '#ffffff', padding: '100px 48px' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', marginBottom: '60px' }}>
+            <div>
+              <p style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '11px', color: '#cfa25d', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>WHY CHOOSE SKYBAN</p>
+              <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '42px', lineHeight: 1.1, color: '#0a0a0a' }}>
+                Engineered for <span style={{ color: '#cfa25d' }}>Strength.</span><br/>Designed for <span style={{ color: '#cfa25d' }}>Beauty.</span>
+              </h2>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: '#555', lineHeight: 1.6, maxWidth: '500px' }}>
+                We combine advanced technology with premium materials to deliver roofing solutions that enhance the beauty and value of your property.
+              </p>
+            </div>
           </div>
-        </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px' }}>
+            {[
+              { icon: '🛡️', title: 'Superior Durability', desc: 'Built to withstand harsh weather and time.' },
+              { icon: '⚖️', title: 'Lightweight & Strong', desc: 'Easy to install, strong enough to last.' },
+              { icon: '🌡️', title: 'Heat & Sound Insulation', desc: 'Keep your home cooler and quieter.' },
+              { icon: '✨', title: 'Low Maintenance', desc: 'Long-lasting performance with minimal care.' },
+            ].map((feature, i) => (
+              <div key={i}>
+                <div style={{ fontSize: '32px', filter: 'sepia(1) saturate(5) hue-rotate(5deg)', marginBottom: '16px' }}>{feature.icon}</div>
+                <h4 style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: '16px', color: '#0a0a0a', marginBottom: '8px' }}>{feature.title}</h4>
+                <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '13px', color: '#555', lineHeight: 1.5 }}>{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
       </section>
-    </>
+
+      {/* ── CTA Banner ────────────────────────────────────────────── */}
+      <section style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.1)', padding: '60px 48px' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '36px', color: 'white', marginBottom: '8px' }}>Ready to elevate your roof?</h2>
+            <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: 'rgba(255,255,255,0.6)' }}>Get expert advice and the best roofing solution for your home or project.</p>
+          </div>
+          <button
+            onClick={() => navigate('/contact')}
+            style={{
+              background: '#cfa25d', color: '#0a0a0a', border: 'none',
+              padding: '16px 36px', fontFamily: 'Inter', fontWeight: 700, fontSize: '13px',
+              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px',
+              transition: 'background 0.3s'
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = '#e8c07a'}
+            onMouseLeave={e => e.currentTarget.style.background = '#cfa25d'}
+          >
+            GET A FREE QUOTE <span>→</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
   );
 };
 

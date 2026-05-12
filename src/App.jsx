@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import VideoBackground from './components/VideoBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -21,8 +20,7 @@ function App() {
       {/* Floating Animated Call Button */}
       <RequestCallButton />
 
-      {/* Fixed video background — persists across ALL routes */}
-      <VideoBackground />
+      {/* Removed video background as requested */}
 
       {/* Fixed navbar — always visible */}
       <Navbar />
