@@ -62,60 +62,53 @@ const Features = () => {
   };
 
   return (
-    <div style={{ background: '#f5f5f5', color: '#0a0a0a', paddingTop: '120px' }}>
+    <div className="bg-[#f5f5f5] text-[#0a0a0a] pt-12 md:pt-24">
       
       {/* ── Products Section ────────────────────────────────────────── */}
-      <section style={{ padding: '80px 48px', maxWidth: '1400px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2.5fr', gap: '60px' }}>
+      <section className="px-6 md:px-12 py-16 md:py-20 max-w-[1400px] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           
           {/* Left Text Block */}
-          <div>
-            <p style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '11px', color: '#cfa25d', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>OUR PRODUCTS</p>
-            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '42px', lineHeight: 1.1, color: '#0a0a0a', marginBottom: '24px' }}>
-              Roofing & Gutter Solutions Designed for <span style={{ color: '#cfa25d' }}>Excellence</span>
+          <div className="lg:w-1/3">
+            <p className="font-inter font-semibold text-[11px] text-[#cfa25d] tracking-[2px] uppercase mb-4">OUR PRODUCTS</p>
+            <h2 className="font-[Playfair_Display] font-bold text-4xl md:text-5xl leading-tight text-[#0a0a0a] mb-6">
+              Roofing & Gutter Solutions Designed for <span className="text-[#cfa25d]">Excellence</span>
             </h2>
-            <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: '#555', lineHeight: 1.6, marginBottom: '40px' }}>
+            <p className="font-inter font-normal text-[15px] text-[#555] leading-relaxed mb-10">
               High performance roofing tiles and uPVC rain gutters that combine strength, style and long lasting protection.
             </p>
             <button
               onClick={() => navigate('/products')}
-              style={{
-                background: '#0a0a0a', color: 'white', border: 'none',
-                padding: '16px 32px', fontFamily: 'Inter', fontWeight: 600, fontSize: '12px',
-                cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px',
-                transition: 'background 0.3s'
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = '#222'}
-              onMouseLeave={e => e.currentTarget.style.background = '#0a0a0a'}
+              className="bg-[#0a0a0a] text-white border-none py-4 px-8 font-inter font-semibold text-[12px] cursor-pointer flex items-center justify-center gap-3 transition-colors hover:bg-[#222]"
             >
               VIEW ALL PRODUCTS <span>→</span>
             </button>
           </div>
 
           {/* Right Product Cards */}
-          <div style={{ display: 'flex', gap: '24px', overflowX: 'auto', paddingBottom: '24px' }}>
+          <div className="lg:w-2/3 flex gap-6 overflow-x-auto pb-6 snap-x">
             {products.slice(0, 3).map((product) => (
-              <div key={product.id} style={{ background: 'white', minWidth: '320px', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
-                <div style={{ height: '200px', overflow: 'hidden', position: 'relative' }}>
-                  <img src={product.image} alt={product.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <div style={{ position: 'absolute', bottom: '-20px', left: '24px', width: '48px', height: '48px', background: '#cfa25d', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', border: '4px solid white' }}>
+              <div key={product.id} className="bg-white min-w-[300px] md:min-w-[340px] rounded-sm overflow-hidden shadow-xl shadow-black/5 snap-center shrink-0">
+                <div className="h-[200px] overflow-hidden relative">
+                  <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+                  <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#cfa25d] rounded-full flex items-center justify-center text-white border-4 border-white">
                     🏠
                   </div>
                 </div>
-                <div style={{ padding: '40px 24px 32px' }}>
-                  <h3 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '20px', color: '#0a0a0a', marginBottom: '16px', textTransform: 'uppercase' }}>
+                <div className="p-8 pt-10">
+                  <h3 className="font-[Playfair_Display] font-bold text-xl text-[#0a0a0a] mb-4 uppercase">
                     {product.title}
                   </h3>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0' }}>
+                  <ul className="list-none p-0 m-0 mb-6">
                     {product.bullets.map((bullet, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', fontFamily: 'Inter', fontSize: '13px', color: '#555' }}>
-                        <span style={{ color: '#cfa25d', fontSize: '14px' }}>✔</span> {bullet}
+                      <li key={i} className="flex items-center gap-2 mb-2 font-inter text-[13px] text-[#555]">
+                        <span className="text-[#cfa25d] text-[14px]">✔</span> {bullet}
                       </li>
                     ))}
                   </ul>
                   <button
                     onClick={() => navigate(`/products#${product.id}`)}
-                    style={{ background: 'transparent', border: 'none', color: '#cfa25d', fontFamily: 'Inter', fontWeight: 600, fontSize: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+                    className="bg-transparent border-none text-[#cfa25d] font-inter font-semibold text-[12px] cursor-pointer flex items-center gap-2"
                   >
                     EXPLORE MORE <span>→</span>
                   </button>
@@ -127,27 +120,27 @@ const Features = () => {
       </section>
 
       {/* ── About Section ───────────────────────────────────────────── */}
-      <section style={{ background: '#0a0a0a', color: 'white', padding: '100px 48px' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+      <section className="bg-[#0a0a0a] text-white px-6 md:px-12 py-16 md:py-24">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* Real Video Player */}
           <div 
-            style={{ position: 'relative', borderRadius: '4px', overflow: 'hidden', aspectRatio: '16/9', cursor: 'pointer' }}
+            className="relative rounded-sm overflow-hidden aspect-video cursor-pointer"
             onClick={togglePlay}
           >
             <video 
               ref={videoRef}
               src={`${import.meta.env.BASE_URL}skyban-bg-full.mp4`} 
               poster={`${import.meta.env.BASE_URL}premium_shingle_roof.png`}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              className="w-full h-full object-cover"
               playsInline
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
             />
             {!isPlaying && (
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)' }}>
-                <div style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', transition: 'all 0.3s' }}>
-                  <div style={{ width: 0, height: 0, borderTop: '12px solid transparent', borderBottom: '12px solid transparent', borderLeft: '20px solid white', marginLeft: '6px' }} />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-white flex items-center justify-center bg-black/40 backdrop-blur-sm transition-all duration-300">
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-white ml-1 md:border-t-[12px] md:border-b-[12px] md:border-l-[20px] md:ml-2" />
                 </div>
               </div>
             )}
@@ -155,15 +148,15 @@ const Features = () => {
 
           {/* About Text & Stats */}
           <div>
-            <p style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '11px', color: '#cfa25d', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>ABOUT SKYBAN</p>
-            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '48px', lineHeight: 1.1, color: 'white', marginBottom: '24px' }}>
-              Building Roofs.<br/>Building <span style={{ color: '#cfa25d' }}>Trust.</span>
+            <p className="font-inter font-semibold text-[11px] text-[#cfa25d] tracking-[2px] uppercase mb-4">ABOUT SKYBAN</p>
+            <h2 className="font-[Playfair_Display] font-bold text-4xl md:text-5xl leading-tight text-white mb-6">
+              Building Roofs.<br/>Building <span className="text-[#cfa25d]">Trust.</span>
             </h2>
-            <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, marginBottom: '48px', maxWidth: '500px' }}>
+            <p className="font-inter font-normal text-[15px] text-white/70 leading-relaxed mb-10 max-w-[500px]">
               Skyban Roofing Systems is committed to delivering innovative, long-lasting and aesthetically superior roofing and gutter solutions. With advanced technology and strict quality standards, we ensure every roof we build stands tall for generations.
             </p>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
               {[
                 { val: '10+', label: 'Years of Excellence', icon: '🏢' },
                 { val: '1000+', label: 'Projects Completed', icon: '📋' },
@@ -171,9 +164,9 @@ const Features = () => {
                 { val: '100%', label: 'Quality Assurance', icon: '⭐' }
               ].map((stat, i) => (
                 <div key={i}>
-                  <div style={{ color: '#cfa25d', fontSize: '24px', marginBottom: '8px' }}>{stat.icon}</div>
-                  <div style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '28px', color: '#cfa25d', marginBottom: '4px' }}>{stat.val}</div>
-                  <div style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '11px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{stat.label}</div>
+                  <div className="text-[#cfa25d] text-2xl mb-2">{stat.icon}</div>
+                  <div className="font-[Playfair_Display] font-bold text-3xl text-[#cfa25d] mb-1">{stat.val}</div>
+                  <div className="font-inter font-normal text-[11px] text-white/50 leading-snug">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -183,24 +176,24 @@ const Features = () => {
       </section>
 
       {/* ── Why Choose Skyban ───────────────────────────────────────── */}
-      <section style={{ background: '#ffffff', padding: '100px 48px' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <section className="bg-white px-6 md:px-12 py-16 md:py-24">
+        <div className="max-w-[1400px] mx-auto">
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', marginBottom: '60px' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-12 md:mb-16">
             <div>
-              <p style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '11px', color: '#cfa25d', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>WHY CHOOSE SKYBAN</p>
-              <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '42px', lineHeight: 1.1, color: '#0a0a0a' }}>
-                Engineered for <span style={{ color: '#cfa25d' }}>Strength.</span><br/>Designed for <span style={{ color: '#cfa25d' }}>Beauty.</span>
+              <p className="font-inter font-semibold text-[11px] text-[#cfa25d] tracking-[2px] uppercase mb-4">WHY CHOOSE SKYBAN</p>
+              <h2 className="font-[Playfair_Display] font-bold text-4xl md:text-5xl leading-tight text-[#0a0a0a]">
+                Engineered for <span className="text-[#cfa25d]">Strength.</span><br/>Designed for <span className="text-[#cfa25d]">Beauty.</span>
               </h2>
             </div>
-            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: '#555', lineHeight: 1.6, maxWidth: '500px' }}>
+            <div className="flex items-end">
+              <p className="font-inter font-normal text-[15px] text-[#555] leading-relaxed max-w-[500px]">
                 We combine advanced technology with premium materials to deliver roofing solutions that enhance the beauty and value of your property.
               </p>
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {[
               { icon: '🛡️', title: 'Superior Durability', desc: 'Built to withstand harsh weather and time.' },
               { icon: '⚖️', title: 'Lightweight & Strong', desc: 'Easy to install, strong enough to last.' },
@@ -208,9 +201,9 @@ const Features = () => {
               { icon: '✨', title: 'Low Maintenance', desc: 'Long-lasting performance with minimal care.' },
             ].map((feature, i) => (
               <div key={i}>
-                <div style={{ fontSize: '32px', filter: 'sepia(1) saturate(5) hue-rotate(5deg)', marginBottom: '16px' }}>{feature.icon}</div>
-                <h4 style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: '16px', color: '#0a0a0a', marginBottom: '8px' }}>{feature.title}</h4>
-                <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '13px', color: '#555', lineHeight: 1.5 }}>{feature.desc}</p>
+                <div className="text-3xl mb-4" style={{filter: 'sepia(1) saturate(5) hue-rotate(5deg)'}}>{feature.icon}</div>
+                <h4 className="font-inter font-bold text-[16px] text-[#0a0a0a] mb-2">{feature.title}</h4>
+                <p className="font-inter font-normal text-[13px] text-[#555] leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -219,22 +212,15 @@ const Features = () => {
       </section>
 
       {/* ── CTA Banner ────────────────────────────────────────────── */}
-      <section style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.1)', padding: '60px 48px' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <section className="bg-[#0a0a0a] border-t border-white/10 px-6 md:px-12 py-12 md:py-16">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <h2 style={{ fontFamily: 'Playfair Display', fontWeight: 700, fontSize: '36px', color: 'white', marginBottom: '8px' }}>Ready to elevate your roof?</h2>
-            <p style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '15px', color: 'rgba(255,255,255,0.6)' }}>Get expert advice and the best roofing solution for your home or project.</p>
+            <h2 className="font-[Playfair_Display] font-bold text-3xl md:text-4xl text-white mb-2">Ready to elevate your roof?</h2>
+            <p className="font-inter font-normal text-[15px] text-white/60">Get expert advice and the best roofing solution for your home or project.</p>
           </div>
           <button
             onClick={() => navigate('/contact')}
-            style={{
-              background: '#cfa25d', color: '#0a0a0a', border: 'none',
-              padding: '16px 36px', fontFamily: 'Inter', fontWeight: 700, fontSize: '13px',
-              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px',
-              transition: 'background 0.3s'
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = '#e8c07a'}
-            onMouseLeave={e => e.currentTarget.style.background = '#cfa25d'}
+            className="bg-[#cfa25d] text-[#0a0a0a] border-none py-4 px-8 font-inter font-bold text-[13px] cursor-pointer flex items-center gap-3 transition-colors hover:bg-[#e8c07a] shrink-0"
           >
             GET A FREE QUOTE <span>→</span>
           </button>

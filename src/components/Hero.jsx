@@ -14,81 +14,68 @@ const Hero = () => {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#0a0a0a' }}>
+    <div className="relative w-full min-h-screen flex flex-col bg-[#0a0a0a]">
       
       {/* Background Image with Overlay */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+      <div className="absolute inset-0 z-0">
         <img 
           src={`${import.meta.env.BASE_URL}hero_bg_sunset_mansion.png`}
           alt="Luxury Modern Home Roofing" 
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          className="w-full h-full object-cover"
         />
-        {/* Adjusted dark overlay for better text contrast without losing image clarity */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 45%, rgba(10,10,10,0.1) 100%)'
-        }} />
+        {/* Adjusted dark overlay for better text contrast */}
+        <div 
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 45%, rgba(10,10,10,0.1) 100%)' }} 
+        />
       </div>
 
       {/* Main Content */}
-      <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', alignItems: 'center', padding: '0 48px' }}>
-        <div style={{ maxWidth: '750px', paddingTop: '60px' }}>
+      <div className="relative z-10 flex-1 flex items-center px-6 md:px-12 py-24 md:py-0">
+        <div className="max-w-[750px] pt-12 md:pt-20">
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-            style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '12px', letterSpacing: '3px', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', marginBottom: '20px' }}
+            className="font-inter font-semibold text-[11px] md:text-[12px] tracking-[3px] text-white/70 uppercase mb-4 md:mb-5"
           >
             Premium Roofing Solutions
           </motion.p>
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ fontFamily: 'Italiana, serif', fontWeight: 400, fontSize: 'clamp(56px, 7vw, 90px)', lineHeight: 1, color: 'white', letterSpacing: '1px' }}
+            className="font-[Italiana] font-normal text-5xl sm:text-6xl md:text-7xl lg:text-[90px] leading-none text-white tracking-[1px] mb-2"
           >
             BUILT STRONG.
           </motion.h1>
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            style={{ fontFamily: 'Italiana, serif', fontWeight: 400, fontSize: 'clamp(56px, 7vw, 90px)', lineHeight: 1.1, color: '#cfa25d', marginBottom: '28px', letterSpacing: '1px' }}
+            className="font-[Italiana] font-normal text-5xl sm:text-6xl md:text-7xl lg:text-[90px] leading-tight text-[#cfa25d] mb-6 tracking-[1px]"
           >
             BUILT TO LAST.
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
-            style={{ fontFamily: 'Inter', fontWeight: 300, fontSize: '18px', color: 'rgba(255,255,255,0.9)', lineHeight: 1.6, maxWidth: '580px', marginBottom: '48px', letterSpacing: '0.5px' }}
+            className="font-inter font-light text-[16px] md:text-[18px] text-white/90 leading-relaxed max-w-[580px] mb-10 tracking-[0.5px]"
           >
             Stone Coated Roofing Tiles & uPVC Rain Gutters for Beautiful, Durable & Future-Ready Homes.
           </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
-            style={{ display: 'flex', gap: '20px' }}
+            className="flex flex-col sm:flex-row gap-4 md:gap-5"
           >
             <button
               onClick={() => navigate('/products')}
-              style={{
-                background: '#cfa25d', color: '#0a0a0a', border: 'none',
-                padding: '16px 36px', fontFamily: 'Inter', fontWeight: 700, fontSize: '13px', letterSpacing: '1px',
-                cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px',
-                transition: 'background 0.3s'
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = '#e8c07a'}
-              onMouseLeave={e => e.currentTarget.style.background = '#cfa25d'}
+              className="bg-[#cfa25d] text-[#0a0a0a] border-none py-4 px-8 font-inter font-bold text-[13px] tracking-[1px] cursor-pointer flex items-center justify-center gap-3 transition-colors duration-300 hover:bg-[#e8c07a]"
             >
-              EXPLORE PRODUCTS <span style={{fontSize: '16px'}}>→</span>
+              EXPLORE PRODUCTS <span className="text-[16px]">→</span>
             </button>
 
             <button
               onClick={() => navigate('/contact')}
-              style={{
-                background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.3)',
-                padding: '16px 36px', fontFamily: 'Inter', fontWeight: 600, fontSize: '13px', letterSpacing: '1px',
-                cursor: 'pointer', transition: 'all 0.3s'
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#cfa25d'; e.currentTarget.style.color = '#cfa25d'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; e.currentTarget.style.color = 'white'; }}
+              className="bg-transparent text-white border border-white/30 py-4 px-8 font-inter font-semibold text-[13px] tracking-[1px] cursor-pointer transition-colors duration-300 hover:border-[#cfa25d] hover:text-[#cfa25d]"
             >
               GET A QUOTE
             </button>
@@ -97,19 +84,18 @@ const Hero = () => {
       </div>
 
       {/* Feature Bar Overlapping Bottom */}
-      <div style={{ position: 'relative', zIndex: 2, padding: '0 48px', marginTop: 'auto', marginBottom: '-55px' }}>
-        <div style={{
-          background: 'rgba(10,10,10,0.92)',
-          backdropFilter: 'blur(20px)',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          borderLeft: '1px solid rgba(255,255,255,0.03)',
-          borderRight: '1px solid rgba(255,255,255,0.03)',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          padding: '36px 24px',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
-        }}>
+      <div className="relative z-20 px-4 md:px-12 mt-12 md:mt-auto md:mb-[-55px]">
+        <div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-0 p-6 md:p-9 shadow-2xl"
+          style={{
+            background: 'rgba(10,10,10,0.92)',
+            backdropFilter: 'blur(20px)',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
+            borderLeft: '1px solid rgba(255,255,255,0.03)',
+            borderRight: '1px solid rgba(255,255,255,0.03)',
+          }}
+        >
           {[
             { icon: icons.quality, title: 'PREMIUM QUALITY', sub: 'Best in class materials' },
             { icon: icons.weather, title: 'WEATHER RESISTANT', sub: 'Built for all climates' },
@@ -117,11 +103,14 @@ const Hero = () => {
             { icon: icons.house, title: 'LOW MAINTENANCE', sub: 'Easy to clean & maintain' },
             { icon: icons.support, title: 'EXPERT SUPPORT', sub: 'Dedicated technical support' },
           ].map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
+            <div 
+              key={i} 
+              className={`flex items-center justify-start md:justify-center gap-4 ${i < 4 ? 'lg:border-r lg:border-white/5' : ''}`}
+            >
               <div>{item.icon}</div>
               <div>
-                <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: '12px', color: 'white', marginBottom: '4px', letterSpacing: '0.5px' }}>{item.title}</div>
-                <div style={{ fontFamily: 'Inter', fontWeight: 400, fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>{item.sub}</div>
+                <div className="font-inter font-semibold text-[12px] text-white mb-1 tracking-[0.5px]">{item.title}</div>
+                <div className="font-inter font-normal text-[11px] text-white/50">{item.sub}</div>
               </div>
             </div>
           ))}
